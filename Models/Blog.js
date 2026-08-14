@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-
+// blogs tab;es name chaneg
 const Blog = sequelize.define('Blog', {
   id: { type: DataTypes.INTEGER.UNSIGNED, autoIncrement: true, primaryKey: true },
   title: { type: DataTypes.STRING(255), allowNull: false },
@@ -13,6 +13,7 @@ const Blog = sequelize.define('Blog', {
   tags: { type: DataTypes.JSON, allowNull: false, defaultValue: [] },
   status: { type: DataTypes.ENUM('draft', 'published'), allowNull: false, defaultValue: 'draft' },
   cover_image_url: { type: DataTypes.STRING(1000), allowNull: true },
+  
 }, { tableName: 'blogs', createdAt: 'created_at', updatedAt: 'updated_at' });
 
 module.exports = Blog;
