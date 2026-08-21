@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const requiredVariables = ['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD'];
-const missingVariables = requiredVariables.filter((name) => !process.env[name]);
+const missingVariables = requiredVariables.filter((name) => !(name in process.env));
 
 if (missingVariables.length) {
   throw new Error(`Missing environment variables: ${missingVariables.join(', ')}`);
@@ -24,4 +24,3 @@ const sequelize = new Sequelize(
 );
 
 module.exports = sequelize;
-
